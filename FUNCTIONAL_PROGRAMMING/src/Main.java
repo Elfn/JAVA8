@@ -1,3 +1,5 @@
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -322,6 +324,51 @@ public class Main {
         Double avg = optionalAverage.getAsDouble();
 
         System.out.println(max+" "+min+" "+avg);
+
+
+        System.out.println("---------------------------------------------STREAM FILTERS-------------------------------------------------------------------------------------------");
+
+        List<Student> students = new ArrayList<>();
+
+        students.add(new Student("Eric",22,10));
+        students.add(new Student("Rita",34,15));
+        students.add(new Student("Bachir",50,18));
+        students.add(new Student("Mario",44,20));
+        students.add(new Student("Yann",16,11));
+
+        //--------------filters
+
+
+        Stream<Student> studentStream = students.stream();
+
+//        studentStream.filter(data -> data.getMark() > 10)
+//                     .filter(data -> data.getAge() < 20)
+//                     .forEach(t-> System.out.println("Name :"+t.getName()));
+
+        System.out.println("---------------------------------------------------FIND FIRST----------------------------------------------------");
+
+
+        /**
+         *
+         *  @findFirst() is used to find a specific @optional data and it returns item conform to filter predicate
+         *
+         **/
+
+        Optional<Student> studentOptional = studentStream.
+                filter(student -> student.getName().equalsIgnoreCase("rita"))
+                .findFirst();
+
+        if(studentOptional.isPresent())
+        {
+            Student student = studentOptional.get();
+
+            System.out.println(student.getName()+" is there");
+        }
+        else
+        {
+            System.out.println("Name not found!!!");
+        }
+
 
     }
 

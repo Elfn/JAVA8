@@ -9,6 +9,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -210,6 +211,13 @@ public class Main {
 
         System.out.println("COUNT "+count);
 
+        /**
+         *
+         * (OPTIONAL) A container object which may or may not contain a non-null value. If a value is present,
+         *  isPresent() will return true and get() will return the value.
+         *
+         **/
+
         //That optional class is a way to avoid nullpointer exception
         Optional<String> myOptional = Optional.ofNullable(getSecondWord.apply("Elimane out"));
 
@@ -234,10 +242,12 @@ public class Main {
          *  STREAM IS A STRUCTURE FOR PROCESSING A COLLECTION IN FUNCTIONAL STYLE,
          *  ORIGINAL COLLECTION IS NOT MODIFIED,
          *  STREAM MAY BE PROCESSED ONLY ONCE,
-         *  AFTER GETTING AN OUTPUT YOU CAN'T USE IT AGAIN
+         *  AFTER GETTING AN OUTPUT YOU CAN'T USE IT AGAIN IT DOESN'T KEEP DATA PERMANANTLY
+         *  IN CONTRAST TO COLLECTIONS
          *
          **/
 
+        //Allows sort lines into a file
         String path = "/Users/Elimane/Documents/File/file.txt";
         File file = new File(path);
 //        Stream.iterate(0, n->n+2)
@@ -258,7 +268,7 @@ public class Main {
 
         Optional.ofNullable(errors).ifPresent(System.out::println);
 
-        System.out.println("LINES "+Tests.getErrorLines(path));
+        //System.out.println("LINES "+Tests.getErrorLines(path));
 
         System.out.println("---------------------------------------------CONVERT COLLECTION INTO STREAMS----------------------------------------------------");
 
@@ -278,6 +288,42 @@ public class Main {
 
         //To display number list in descending order
         //stream.sorted((f,s) -> f - s).forEach(System.out::println);
+
+
+        System.out.println("---------------------------------------------STREAM WITH RANGE INTO STREAMS----------------------------------------------------");
+
+        //PROCESSING DATA ONE INDIVIDUALLY one by one
+
+        //Here we used generic type : Stream<Integer>
+        //Stream<Integer> integerStream = Stream.of(3,4,5);
+
+        //Here IntStream wraps the type
+        IntStream integerStream = IntStream.of(3,4,5);
+
+        integerStream.filter(i -> i < 5).forEach(System.out::println);
+
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
+
+        //PROCESSING DATA'S RANGE
+        //we have to create 3 separate streams from scratch because we cannot
+        //use separated operators for the same stream
+        IntStream rangeStream = IntStream.rangeClosed(10,22).skip(1);
+        IntStream rangeStream1 = IntStream.rangeClosed(10,22).skip(1);
+        IntStream rangeStream2 = IntStream.rangeClosed(10,22).skip(1);
+
+        //rangeStream.forEach(System.out::println);
+
+        OptionalInt optionalMax = rangeStream.max();
+        OptionalInt optionalMin = rangeStream1.min();
+        OptionalDouble optionalAverage = rangeStream2.average();
+
+        Integer max = optionalMax.getAsInt();
+        Integer min = optionalMin.getAsInt();
+        Double avg = optionalAverage.getAsDouble();
+
+        System.out.println(max+" "+min+" "+avg);
+
     }
+
     }
 

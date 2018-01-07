@@ -354,21 +354,39 @@ public class Main {
          *
          **/
 
-        Optional<Student> studentOptional = studentStream.
-                filter(student -> student.getName().equalsIgnoreCase("rita"))
-                .findFirst();
+//        Optional<Student> studentOptional = studentStream.
+//                filter(student -> student.getName().equalsIgnoreCase("rita"))
+//                .findFirst();
+//
+//        if(studentOptional.isPresent())
+//        {
+//            Student student = studentOptional.get();
+//
+//            System.out.println(student.getName()+" is there");
+//        }
+//        else
+//        {
+//            System.out.println("Name not found!!!");
+//        }
 
-        if(studentOptional.isPresent())
+        System.out.println("---------------------------------------------------ALL MATCH----------------------------------------------------");
+
+
+        /**
+         *
+         *  @allMatch() is used to return boolean is predicate is verified
+         *
+         **/
+
+        boolean mybool = studentStream.allMatch(student -> student.getAge() >= 16);
+
+        if(mybool)
         {
-            Student student = studentOptional.get();
-
-            System.out.println(student.getName()+" is there");
+            System.out.println("There are 16+ persons");
         }
-        else
-        {
-            System.out.println("Name not found!!!");
+        else {
+            System.out.println("ERROR");
         }
-
 
     }
 

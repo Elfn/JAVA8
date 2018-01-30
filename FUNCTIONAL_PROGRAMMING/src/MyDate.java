@@ -50,9 +50,10 @@ public class MyDate {
         return sdf.format(currentDate);
     }
 
-    public boolean isWeekEndDay(Date d)
+    public static boolean isWeekEndDay(Date d)
     {
         Calendar c = Calendar.getInstance();
+       // c.setTime(d);
 
         return c.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
     }

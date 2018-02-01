@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by Elimane on Jan, 2018, at 12:16
  */
-public class ConvertDate {
+public class ConvertStringIntoDate {
 
     public static Date convertDate(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

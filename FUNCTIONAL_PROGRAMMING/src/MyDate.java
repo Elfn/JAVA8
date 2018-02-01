@@ -53,7 +53,7 @@ public class MyDate {
     public static boolean isWeekEndDay(Date d)
     {
         Calendar c = Calendar.getInstance();
-       // c.setTime(d);
+        c.setTime(d);
 
         return c.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
     }

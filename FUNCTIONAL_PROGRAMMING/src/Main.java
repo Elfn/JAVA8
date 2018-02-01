@@ -1,5 +1,3 @@
-import jdk.nashorn.internal.ir.annotations.Ignore;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -428,7 +426,7 @@ public class Main {
 
         Stream<String> date = listDate.stream();
 
-        date.map(ConvertDate::convertDate)
+        date.map(ConvertStringIntoDate::convertDate)
                 .forEach(System.out::println);
 
 
@@ -528,33 +526,78 @@ public class Main {
          *
          *
          **/
+//
+//        List<String> listOfDate = new ArrayList<>();
+//
+//        listOfDate.add("04/03/2017");
+//        listOfDate.add("11/03/2017");
+//        listOfDate.add("18/03/2017");
+//        listOfDate.add("25/03/2017");
+//
+//        //We have to populate that 2 arrays inside only one stream process
+//        List<Date> dates = new ArrayList<>();
+//        List<Date> weekEndDates = new ArrayList<>();
+//
+//
+//        Stream<String> dateStream = listOfDate.stream();
+//
+//        dateStream.map(ConvertStringIntoDate::convertDate)
+//                    .peek(d1 -> dates.add(d1))
+//                    .filter(MyDate::isWeekEndDay)
+//                    .peek(d2 -> weekEndDates.add(d2))
+//                    .forEach(date1 -> System.out.println(date1));
+//
+////        ordinaryDates.forEach(System.out::println);
+////        weekEndDates.forEach(System.out::println);
+//
+//        System.out.println("all dates size "+dates.size());
+//        System.out.println("weekEnd dates size "+weekEndDates.size());
 
-        List<String> listOfDate = new ArrayList<>();
-
-        listDate.add("12/12/2018");
-        listDate.add("10/12/2018");
-        listDate.add("01/12/2018");
-        listDate.add("31/12/2018");
-
-        List<Date> ordinaryDates = new ArrayList<>();
-        List<Date> weekEndDates = new ArrayList<>();
 
 
-        Stream<String> dateStream = listDate.stream();
+        System.out.println("---------------------------------------------------FLATMAP()----------------------------------------------------");
 
-        weekEndDates = dateStream.map(ConvertDate::convertDate)
-                                    .filter(date1 -> MyDate.isWeekEndDay(date1))
-                                    .collect(toList());
 
-//        ordinaryDates = dateStream.map(ConvertDate::convertDate)
-//                .filter(date1 -> !MyDate.isWeekEndDay(date1))
-//                .collect(toList());
+        /**
+         *
+         *  @FLATMAP() => MAP + FLATTEN , IT INPUT ONE OR SEREVAL COLLECTION,OBJECT, OR STREAM AND OUTPUT A SINGLE STREAM
+         *
+         **/
 
-        weekEndDates.forEach(day -> System.out.println(day));
+            Customer c1 = new Customer("Eric");
+            Customer c2 = new Customer("Ori");
 
 
 
+            c1.addProduct(new Product("Iphone",4000));
+            c1.addProduct(new Product("Galaxy",1000));
+            c2.addProduct(new Product("MacBook",7000));
+            c2.addProduct(new Product("HP",6000));
 
+            //Get purchases
+//            List<Product> list1 = new ArrayList<>();
+//            List<Product> list2 = new ArrayList<>();
+//
+//            c1.getProducts().forEach(product -> list1.add(product));
+//            c2.getProducts().forEach(product -> list2.add(product));
+
+        List<Customer> customerList = new ArrayList<>();
+        customerList.add(c1);
+        customerList.add(c2);
+
+            //Transform multiple lists into a single stream
+//            List<Product> singleStream = Stream.of(c1.getProducts(),c2.getProducts())
+//                                                .flatMap(single -> single.stream())
+        //Convert to profit by multiplying by 0.8
+       double profit =  customerList.stream()
+                    .map(customer -> customer.getProducts())
+                    .flatMap(singleStream -> singleStream.stream())
+                    .map(stream_ -> stream_.getPrice() * 0.8)
+               //reduce operator for accumulate double values with (sum)
+                    .reduce(0.0,Double::sum);
+                    //.forEach(System.out::println);
+
+        System.out.println("Total profit => "+profit);
 
     }
 

@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
-public class Main {
+public class Main_ {
 
     public static void main(String[] args) throws IOException {
 

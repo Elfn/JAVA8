@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/STRING_OBJECT_AND_REGEX/STRING_OBJECT_AND_REGEX.iml" filepath="$PROJECT_DIR$/STRING_OBJECT_AND_REGEX/STRING_OBJECT_AND_REGEX.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/java-8.iml" filepath="$PROJECT_DIR$/.idea/java-8.iml" />
     </modules>
   </component>

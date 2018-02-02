@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/FUNCTIONAL_PROGRAMMING/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/STRING_OBJECT_AND_REGEX/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/FILES_CONVERSION/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

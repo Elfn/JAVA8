@@ -12,6 +12,12 @@ These design patterns concern class and object composition. Concept of inheritan
 These design patterns are specifically concerned with communication between objects.
 #####J2EE Patterns
 These design patterns are specifically concerned with the presentation tier. These patterns are identified by Sun Java Center.
+#####STRING
+Most use built in object of Java, used for text operation
+it includes char Array and Utility methods
+
+-It is immutable because all text operations will not be done on the original string
+-So we have to assign the result of operations to another string variable(in the stack memory) to make it persistent
 
 
 

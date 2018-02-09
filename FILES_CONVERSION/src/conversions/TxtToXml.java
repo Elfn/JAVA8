@@ -17,26 +17,26 @@ import java.io.FileReader;
  */
 public class TxtToXml {
     //Reads text from a character-input stream
-    BufferedReader in;
+    BufferedReader input;
 
     //Acts as an holder for a transformation result
-    StreamResult out;
+    StreamResult output;
 
     //A TransformerHandler listens for SAX ContentHandler parse events and transforms them to a Result
-    TransformerHandler th;
+    TransformerHandler thandler;
 
 
-    public void start(String txtfilepath) {
+    public void start_(String txtfilepath) {
         try {
-            in = new BufferedReader(new FileReader(txtfilepath));
-            out = new StreamResult(txtfilepath.replaceAll("txt","xml"));
+            input = new BufferedReader(new FileReader(txtfilepath));
+            output = new StreamResult(txtfilepath.replaceAll("txt","xml"));
             openXml();
             String str;
-            while ((str = in.readLine()) != null) {
+            while ((str = input.readLine()) != null) {
                 process(str);
             }
             System.out.println("COnversion done !!!!");
-            in.close();
+            input.close();
             closeXml();
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,27 +46,27 @@ public class TxtToXml {
     public void openXml() throws ParserConfigurationException, TransformerConfigurationException, SAXException {
 
         SAXTransformerFactory tf = (SAXTransformerFactory) SAXTransformerFactory.newInstance();
-        th = tf.newTransformerHandler();
+        thandler = tf.newTransformerHandler();
 
         // pretty XML output
-        Transformer serializer = th.getTransformer();
+        Transformer serializer = thandler.getTransformer();
         serializer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
         serializer.setOutputProperty(OutputKeys.INDENT, "yes");
 
-        th.setResult(out);
-        th.startDocument();
-        th.startElement(null, null, "inserts", null);
+        thandler.setResult(output);
+        thandler.startDocument();
+        thandler.startElement(null, null, "inserts", null);
     }
 
     public void process(String s) throws SAXException {
-        th.startElement(null, null, "option", null);
-        th.characters(s.toCharArray(), 0, s.length());
-        th.endElement(null, null, "option");
+        thandler.startElement(null, null, "option", null);
+        thandler.characters(s.toCharArray(), 0, s.length());
+        thandler.endElement(null, null, "option");
     }
 
     public void closeXml() throws SAXException {
-        th.endElement(null, null, "inserts");
-        th.endDocument();
+        thandler.endElement(null, null, "inserts");
+        thandler.endDocument();
     }
 }
 

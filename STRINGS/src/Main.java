@@ -60,8 +60,11 @@ public class Main
 //        System.out.println(s);
 
         String sentence = "Now let’s go to do something. Let me explain it first";
+        String searchWord = "let";
 
-        System.out.println("number of occurence of let -> "+wordCount.getInstance().coutOccurence(sentence,"LET"));
+        System.out.println("The word "+searchWord+" exists "+wordCount.getInstance().coutOccurence(sentence,searchWord)+" times in the sentence");
 
+
+        System.out.println(wordCount.getInstance().deleteAll(sentence,searchWord));
     }
 }

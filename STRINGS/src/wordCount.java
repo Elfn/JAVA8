@@ -33,7 +33,7 @@ public class wordCount {
         int index = 0;
 
         while (index != -1) {
-            index = sentence.indexOf(wordToseearch, index);
+            index = sentence.indexOf(index, sentence.indexOf(wordToseearch));
 
             if (index != -1) {
                 counter++;
@@ -51,32 +51,26 @@ public class wordCount {
     }
 
     public String deleteAll(String sentence, String wordToDelete) {
-        sentence = sentence.toLowerCase();
-        wordToDelete = wordToDelete.toLowerCase();
 
-        //get index of the word to search and the from index
+        String result = "";
         int index = 0;
-        //Word to delete
-        String word = "";
+        int finder = 0;
 
-        while (index != -1) {
-            index = sentence.indexOf(wordToDelete);
+        while (index <= sentence.length())
+        {
+            finder = sentence.indexOf(wordToDelete,index);
+            //substring(first index, index of the word/letter to exclude)
+            String substring = sentence.substring(index, finder);
 
-            if (index != -1) {
-               word = sentence.substring(index,index+1) ;
+            if(finder != -1)
+            index = finder + wordToDelete.length();
 
-               return sentence = sentence.replaceAll(word, "");
+            result.concat(substring);
 
-            }
-            if (index == -1) {
-                break;
-            }
-            if (index < sentence.length() - 1) {
-                index++;
-            }
         }
 
-      return "word not found!!!";
+        return result;
+
     }
 }
 

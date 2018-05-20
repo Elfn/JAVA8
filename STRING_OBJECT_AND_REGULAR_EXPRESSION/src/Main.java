@@ -59,12 +59,16 @@ public class Main
 //
 //        System.out.println(s);
 
-        String sentence = "Now let’s go to do something. Let me explain it first";
-        String searchWord = "let";
+//        String sentence = "Now Let’s go to do something. Let me explain it first";
+        String sentence = "Javathlon is the best java course";
 
-        System.out.println("The word "+searchWord+" exists "+wordCount.getInstance().coutOccurence(sentence,searchWord)+" times in the sentence");
+        String searchWord = "Java";
+
+        System.out.println("The word "+searchWord+" exists "+wordCount.getInstance().occurenceFinder(sentence,searchWord)+" times in the sentence");
 
 
         System.out.println(wordCount.getInstance().deleteAll(sentence,searchWord));
+
+        System.out.print("TITLE CASE : "+TitleCase.casify("tHe IMPOrtance of the independency waR"));
     }
 }

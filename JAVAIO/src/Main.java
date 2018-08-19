@@ -1,7 +1,13 @@
+import classes.java.io.Day;
+import classes.java.io.LastModifiedTimeComparator;
+
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -97,22 +103,69 @@ public class Main {
 
         System.out.println("-------------ACCESSING AND MODIFIYNG FOLDER ATTRIBUTES");
         File[] allFiles = f.listFiles();
-        for(File file : allFiles)
-        {
-            if(file.isFile())
-            {
+//        for(File file : allFiles)
+//        {
+//            if(file.isFile())
+//            {
+//                long size = f.length();
+//                long sizeInKB = size / 1024;
+//                System.out.println(file.getName()+" -- "+sizeInKB+" KB");
+//
+//                long lastModified = file.lastModified();
+//                Date lastModifiedTime = new Date(lastModified);
+//                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+//                System.out.println(sdf.format(lastModifiedTime));
+//            }
+//            //System.out.println(file.getName()+" -- "+file.getAbsolutePath());
+//        }
+
+
+        //ORDERING AND MODIFYING FILES BY LAST MODIFIED TIME
+        System.out.println("-------------ORDERING AND MODIFYING FILES BY LAST MODIFIED TIME");
+
+        Arrays.sort(allFiles, new LastModifiedTimeComparator());
+
+//        for(File file : allFiles) {
+//            if (file.isFile()) {
+//                long size = f.length();
+//                long sizeInKB = size / 1024;
+//                System.out.println(file.getName() + " -- " + sizeInKB + " KB");
+//
+//                long lastModified = file.lastModified();
+//                Date lastModifiedTime = new Date(lastModified);
+//                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+//                System.out.print(sdf.format(lastModifiedTime));
+//            }
+//        }
+
+        FileFilter lastModifiedFilesFilter = new FileFilter() {
+
+            Date beginingOfTheDay = Day.getTime();
+
+            @Override
+            public boolean accept(File file) {
+                //System.out.println("TODAY "+beginingOfTheDay);
+                return  file.lastModified() > beginingOfTheDay.getTime() ? true : false;
+            }
+        };
+
+       File[] allfileslLastModified = f.listFiles(lastModifiedFilesFilter);
+
+
+        System.out.println("-------------MODIFIED TODAY");
+
+        for(File file : allfileslLastModified) {
+            if (file.isFile()) {
                 long size = f.length();
                 long sizeInKB = size / 1024;
-                System.out.println(file.getName()+" -- "+sizeInKB+" KB");
+                System.out.println(file.getName() + " -- " + sizeInKB + " KB");
 
                 long lastModified = file.lastModified();
                 Date lastModifiedTime = new Date(lastModified);
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-                System.out.println(sdf.format(lastModifiedTime));
+                System.out.print(sdf.format(lastModifiedTime));
             }
-            //System.out.println(file.getName()+" -- "+file.getAbsolutePath());
         }
-
 
     }
 }

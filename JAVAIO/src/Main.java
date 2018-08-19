@@ -1,4 +1,6 @@
 import classes.java.io.Day;
+import classes.java.io.FileReaderWriter;
+import classes.java.io.InputOutputStreams;
 import classes.java.io.LastModifiedTimeComparator;
 
 import java.io.File;
@@ -167,5 +169,15 @@ public class Main {
             }
         }
 
+        System.out.println("-------------READ FILE WITH INPUT AND FILE READER");
+
+        File newFile = new File("test.txt");
+
+        InputOutputStreams.inputStream(newFile);
+        FileReaderWriter.reader(newFile);
+
     }
+
+
+
 }

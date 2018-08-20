@@ -1,13 +1,11 @@
-import classes.java.io.Day;
-import classes.java.io.FileReaderWriter;
-import classes.java.io.InputOutputStreams;
-import classes.java.io.LastModifiedTimeComparator;
+import classes.java.io.*;
 
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -17,8 +15,7 @@ import java.util.Date;
  */
 public class Main {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws IOException, ParseException {
 
         //LISTING FILES AND DIRECTORIES
 
@@ -172,9 +169,26 @@ public class Main {
         System.out.println("-------------READ FILE WITH INPUT AND FILE READER");
 
         File newFile = new File("test.txt");
+        File source = new File("dates.txt");
 
         InputOutputStreams.inputStream(newFile);
         FileReaderWriter.reader(newFile);
+
+
+        System.out.println("-------------READ A TEXT FILE LINE BY LINE WITH BUFFEREDREADER");
+
+        BufferedFileReader.reader(newFile);
+
+        FileReaderWriter.writer(newFile);
+
+
+        System.out.println("-------------TP");
+
+        FileConverter fileConverter = new FileConverter();
+
+        fileConverter.convertFile("dates.txt","dates2.txt","dd/MM/yyyy");
+
+
 
     }
 

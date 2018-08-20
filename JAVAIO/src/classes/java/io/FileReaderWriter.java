@@ -1,9 +1,6 @@
 package classes.java.io;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by Elimane on Aug, 2018, at 00:58
@@ -29,4 +26,31 @@ public class FileReaderWriter {
         }
 
     }
+
+    public static void  writer(File file) throws IOException {
+        FileWriter writer = null;
+
+        try {
+            writer = new FileWriter(file.getAbsolutePath(),true);
+
+            writer.append(System.lineSeparator());
+            writer.append("something");
+            System.out.println("Content has been writen successfully!!!");
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(!writer.equals(null))
+            {
+                writer.flush();
+                writer.close();
+            }
+        }
+
+    }
+
+
 }

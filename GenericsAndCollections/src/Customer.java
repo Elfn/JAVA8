@@ -36,7 +36,7 @@ public class Customer {
         if(o == null)
             return false;
 
-        if(this.name == ((Customer)o).name)
+        if(this.age == ((Customer)o).age)
             return true;
 
         return false;

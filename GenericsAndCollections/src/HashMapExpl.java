@@ -45,7 +45,7 @@ public class HashMapExpl {
         //HOW TO USE ENTRY WITH A COLECTION STORING ENTRY MAP
         Collection<Map.Entry<String, Customer>> entrySet = map.entrySet();
 
-        //MAKE ITERATOR FROM COLLECTION OF ENTRY
+        //MAKE ITERATOR FROM COLLECTION OF ENTRY To Directly  ACCESS  KEYS AND VALUES
         Iterator<Map.Entry<String, Customer>> iterator = entrySet.iterator();
         while (iterator.hasNext())
         {

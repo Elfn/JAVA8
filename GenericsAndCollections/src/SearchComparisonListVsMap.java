@@ -6,6 +6,7 @@ import java.util.*;
 public class SearchComparisonListVsMap {
     public static void main(String[] args)
     {
+        System.out.println("-----------------------------PERFORMANCE OF SEARCHING AN ITEM IN LIST VS MAP--------------------------------------");
         List<Customer> customerList = new ArrayList<>();
 
         Map<Integer,Customer> customerMap = new HashMap<>();

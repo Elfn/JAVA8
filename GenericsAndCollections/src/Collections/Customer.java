@@ -1,4 +1,4 @@
-import java.util.Objects;
+package Collections;
 
 /**
  * Created by Elimane on Jan, 2020, at 22:46
@@ -49,7 +49,7 @@ public class Customer implements Comparable{
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Collections.Customer{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';

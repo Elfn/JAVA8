@@ -1,4 +1,4 @@
-import java.util.Map;
+package Collections;
 
 /**
  * Created by Elimane on Dec, 2019, at 19:00

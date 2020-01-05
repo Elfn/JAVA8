@@ -58,7 +58,7 @@ public class Customer implements Comparable{
     @Override
     public int compareTo(Object o) {
 
-        return (this.age == 0 || ((Customer)o).age == 0) ? 0 : (this.age  > ((Customer)o).age) ? 1 : (this.age < ((Customer)o).age) ? -1 : null;
+        return (this.age == 0 || ((Customer)o).age == 0) ? 0 : (this.age  > ((Customer)o).age) ? 1 : (this.age < ((Customer)o).age) ? -1 : 0;
 
     }
 }

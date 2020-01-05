@@ -18,7 +18,7 @@ public class SearchComparisonListVsMap {
             customerMap.put(c.getAge(),c);
         }
 
-        Customer sc = new Customer("",10000);
+        Customer sc = new Customer("",10000) ;
 
         long time1 = new Date().getTime();
         int index = customerList.indexOf(sc);

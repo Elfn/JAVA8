@@ -3,7 +3,7 @@ import java.util.Objects;
 /**
  * Created by Elimane on Jan, 2020, at 22:46
  */
-public class Customer {
+public class Customer implements Comparable{
     private String name;
     private int age;
 
@@ -53,5 +53,12 @@ public class Customer {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+
+        return (this.age == 0 || ((Customer)o).age == 0) ? 0 : (this.age  > ((Customer)o).age) ? 1 : (this.age < ((Customer)o).age) ? -1 : null;
+
     }
 }

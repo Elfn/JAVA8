@@ -33,7 +33,6 @@ public class TestComparator {
         }
 
         System.out.println("-------------------------------BINARY SEARCH-------------------------------");
-        //
         int index = Collections.binarySearch(employeeList,new Employee(0,0.0,"23/12/2017"),new EntranceDateComparator());
 
         if(index >= 0)
